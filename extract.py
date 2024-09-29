@@ -19,7 +19,7 @@ def filterData():
         person_dict['email']=person['email']
         person_dict['username']=person['login']['username']
         person_dict['phone']=person['cell']
-        person_dict['profile']=person['picture']['large']
+        person_dict['profile']=person['picture']['large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']
         person_dict['age']=person['dob']['age']
 
         filtered_data.append((person_dict))
