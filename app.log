@@ -1,0 +1,23 @@
+2024-09-29 14:38:10,620 - ERROR - Error: 'str' object has no attribute 'read'
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 25, in <module>
+    data=json.load(f.read())
+  File "/usr/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+AttributeError: 'str' object has no attribute 'read'
+2024-09-29 14:38:26,247 - ERROR - Error: 'str' object has no attribute 'read'
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 25, in <module>
+    data=json.load(f.read())
+  File "/usr/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+AttributeError: 'str' object has no attribute 'read'
+2024-09-29 14:39:41,035 - ERROR - Error: document must be an instance of dict, bson.son.SON, bson.raw_bson.RawBSONDocument, or a type that inherits from collections.MutableMapping
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 27, in <module>
+    collection.insert_one(data)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 864, in insert_one
+    common.validate_is_document_type("document", document)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/common.py", line 551, in validate_is_document_type
+    raise TypeError(
+TypeError: document must be an instance of dict, bson.son.SON, bson.raw_bson.RawBSONDocument, or a type that inherits from collections.MutableMapping
