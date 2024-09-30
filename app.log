@@ -21,3 +21,494 @@ Traceback (most recent call last):
   File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/common.py", line 551, in validate_is_document_type
     raise TypeError(
 TypeError: document must be an instance of dict, bson.son.SON, bson.raw_bson.RawBSONDocument, or a type that inherits from collections.MutableMapping
+2024-09-30 00:33:20,487 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66f9a45a87731b18f354d08d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 28, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66f9a45a87731b18f354d08d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 00:34:53,157 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66f9a4b7492db1c94c41aa5d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 29, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66f9a4b7492db1c94c41aa5d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 18:53:51,353 - ERROR - Error: operation cancelled
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66f9a7fb250e51fb08ea4bf2, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 29, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2559, in run
+    self._check_last_error()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2638, in _check_last_error
+    raise self._last_error
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2676, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 798, in _insert_command
+    result = conn.command(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/helpers.py", line 45, in inner
+    return func(*args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/pool.py", line 566, in command
+    self._raise_connection_failure(error)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/pool.py", line 538, in command
+    return command(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/network.py", line 208, in command
+    reply = receive_message(conn, request_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/network.py", line 320, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/network.py", line 390, in _receive_data_on_socket
+    wait_for_read(conn, deadline)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/network.py", line 377, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2024-09-30 19:28:26,045 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66faae634367cf888498418c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 29, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66faae634367cf888498418c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:32:09,554 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66faaf436ef304a3e4d5afe0, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 29, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66faaf436ef304a3e4d5afe0, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:35:50,392 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab0203f60f028344729d3, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 29, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab0203f60f028344729d3, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:39:48,132 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab10db2f976f0c7d09c81, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 33, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab10db2f976f0c7d09c81, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:40:35,531 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab13d5edfe42b32e6c1d8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 34, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab13d5edfe42b32e6c1d8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:55:04,059 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab4a14f85dc60f7449dec, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 34, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab4a14f85dc60f7449dec, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+2024-09-30 19:56:27,369 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab4f5bb1342e74e9540b5, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 35, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab4f5bb1342e74e9540b5, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+2024-09-30 19:59:42,752 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab5b875eff496719ac220, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 35, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab5b875eff496719ac220, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+2024-09-30 20:02:20,557 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab656031eb7300dc3feac, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 35, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab656031eb7300dc3feac, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+2024-09-30 20:04:46,484 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab6e86d179c9b4cd87d35, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 35, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab6e86d179c9b4cd87d35, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+2024-09-30 20:10:54,337 - ERROR - Error: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab85880ebe0bcbf1ca2aa, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
+Traceback (most recent call last):
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/data-automation/load.py", line 35, in <module>
+    collection.insert_one(person)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 870, in insert_one
+    self._insert_one(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/collection.py", line 810, in _insert_one
+    self._database.client._retryable_write(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1898, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1784, in _retry_with_session
+    return self._retry_internal(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/_csot.py", line 120, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1830, in _retry_internal
+    ).run()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2554, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2662, in _write
+    self._server = self._get_server()
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 2645, in _get_server
+    return self._client._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/mongo_client.py", line 1649, in _select_server
+    server = topology.select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 397, in select_server
+    server = self._select_server(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 375, in _select_server
+    servers = self.select_servers(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 282, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/home/sidharth/PycharmProjects/ETLPipeLine/.venv/lib/python3.10/site-packages/pymongo/synchronous/topology.py", line 332, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms),SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms), Timeout: 30s, Topology Description: <TopologyDescription id: 66fab85880ebe0bcbf1ca2aa, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('dataautomationcluster-shard-00-00.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-00.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-01.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-01.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>, <ServerDescription ('dataautomationcluster-shard-00-02.8hxfh.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: dataautomationcluster-shard-00-02.8hxfh.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1007) (configured timeouts: socketTimeoutMS: 30000.0ms, connectTimeoutMS: 30000.0ms)')>]>
