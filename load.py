@@ -10,10 +10,16 @@ logging.basicConfig(
     level=logging.ERROR  # Only log errors or above (i.e., critical)
 )
 
-url="mongodb+srv://user:user@dataautomationcluster.8hxfh.mongodb.net/"
-mongo=MongoClient(url)
+try:
+    # mongo = MongoClient("mongodb+srv://user:user@dataautomationcluster.mongodb.net/test?retryWrites=true&w=majority&tlsAllowInvalidCertificates=True")
+    mongo=MongoClient("mongodb+srv://user:user@dataautomationcluster.8hxfh.mongodb.net",connectTimeoutMS=30000,
+    socketTimeoutMS=30000)
+    print("Mongo Connection sucessfull")
+except:
+    print("Mongo Connection Failed..")
 
-dataBaseName="PersonDetails"
+#
+dataBaseName="db"
 collectionName="profile"
 
 database=mongo[dataBaseName]
@@ -25,13 +31,14 @@ try:
         data=json.load(f)
 
         for person in data:
+            print(type(person))
             collection.insert_one(person)
     print("Uploading Data finished.....Data uploaded Successfully...")
 except Exception as E:
     print("Some error occured...Please check Log file for Error Details..")
     logging.error(f"Error: {E}",exc_info=True)
 
-
+#
 
 
 
