@@ -31,7 +31,7 @@ try:
         data=json.load(f)
 
         for person in data:
-            print(type(person))
+            # print(type(person))
             collection.insert_one(person)
     print("Uploading Data finished.....Data uploaded Successfully...")
 except Exception as E:
